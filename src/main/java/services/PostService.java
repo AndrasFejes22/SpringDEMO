@@ -6,6 +6,7 @@ import model.UserRole;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import services.publishers.PublisherService;
 
 import java.util.ArrayList;
@@ -20,12 +21,14 @@ public class PostService {
     private final PublisherService publisherService;
     private final List<Post> posts = new ArrayList<>();
 
-    @Autowired
+    //@Autowired
     public PostService(UserService userService) {
         this(userService, null);
     }
 
-    public PostService(UserService userService, PublisherService publisherService) {
+    @Autowired // constructor injection, van setter injection is és filed injection is
+    //public PostService(UserService userService, PublisherService publisherService) { //így a beans-only-ban: <bean id="email" class="services.publishers.EmailPublisherService" primary="true"/>
+    public PostService(UserService userService, @Qualifier("push") PublisherService publisherService) {
         this.userService = userService;
         this.publisherService = publisherService;
     }
@@ -39,7 +42,9 @@ public class PostService {
         post.setAuthor(author);
         posts.add(post);
         LOGGER.info("Created new post {}", post);
-        publisherService.notifyUsers(post);
+        if(publisherService != null) {
+            publisherService.notifyUsers(post);
+        }
     }
 
     public List<Post> getPostsByAuthor(User author) {
