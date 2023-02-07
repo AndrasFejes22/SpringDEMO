@@ -38,6 +38,8 @@ public class PostService {
         }
         post.setAuthor(author);
         posts.add(post);
+        LOGGER.info("Created new post {}", post);
+        publisherService.notifyUsers(post);
     }
 
     public List<Post> getPostsByAuthor(User author) {
