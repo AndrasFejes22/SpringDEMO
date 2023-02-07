@@ -9,15 +9,15 @@
 
     <context:annotation-config />
 
-    <bean id="userService" class="hu.bearmaster.springtutorial.common.services.InMemoryUserService">
+    <bean id="userService" class="services.InMemoryUserService">
     </bean>
 
-    <bean id="postService" class="hu.bearmaster.springtutorial.common.services.PostService">
+    <bean id="postService" class="services.PostService">
     </bean>
 
-    <bean id="email" class="hu.bearmaster.springtutorial.common.services.publishers.EmailPublisherService" />
+    <bean id="email" class="services.publishers.EmailPublisherService" />
 
-    <bean id="push" class="hu.bearmaster.springtutorial.common.services.publishers.PushNotificationPublisherService" />
+    <bean id="push" class="services.publishers.PushNotificationPublisherService" />
 
 
 </beans>
