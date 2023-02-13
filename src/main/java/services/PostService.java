@@ -7,11 +7,15 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 import services.publishers.PublisherService;
 
 import java.util.ArrayList;
 import java.util.List;
 
+//@Component
+@Service
 public class PostService {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(PostService.class);
@@ -22,14 +26,15 @@ public class PostService {
     private final List<Post> posts = new ArrayList<>();
 
     //@Autowired
-    public PostService(UserService userService) {
-        this(userService, null);
-    }
+    //public PostService(UserService userService) {
+        //this(userService, null);
+    //}
 
-    @Autowired // constructor injection, van setter injection is és filed injection is
+    //@Autowired // constructor injection, van setter injection is és filed injection is
     //public PostService(UserService userService, PublisherService publisherService) { //így a beans-only-ban: <bean id="email" class="services.publishers.EmailPublisherService" primary="true"/>
-    public PostService(UserService userService, @Qualifier("push") PublisherService publisherService) {
+    public PostService(UserService userService ,@Qualifier("push") PublisherService publisherService) {
         this.userService = userService;
+        //this.publisherService = publisherService;
         this.publisherService = publisherService;
     }
 
@@ -42,9 +47,11 @@ public class PostService {
         post.setAuthor(author);
         posts.add(post);
         LOGGER.info("Created new post {}", post);
-        if(publisherService != null) {
+
+        //if(publisherService != null) {
             publisherService.notifyUsers(post);
-        }
+        //}
+
     }
 
     public List<Post> getPostsByAuthor(User author) {
