@@ -48,9 +48,9 @@ public class PostService {
         posts.add(post);
         LOGGER.info("Created new post {}", post);
 
-        //if(publisherService != null) {
+        if(publisherService != null) {
             publisherService.notifyUsers(post);
-        //}
+        }
 
     }
 
