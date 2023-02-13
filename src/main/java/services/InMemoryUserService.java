@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-@Component
+//@Component
 public class InMemoryUserService implements UserService{
 
     private static final Logger LOGGER = LoggerFactory.getLogger(InMemoryUserService.class);

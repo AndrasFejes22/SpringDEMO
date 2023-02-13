@@ -15,7 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 //@Component
-@Service
+//@Service
 public class PostService {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(PostService.class);
@@ -32,7 +32,7 @@ public class PostService {
 
     //@Autowired // constructor injection, van setter injection is és filed injection is
     //public PostService(UserService userService, PublisherService publisherService) { //így a beans-only-ban: <bean id="email" class="services.publishers.EmailPublisherService" primary="true"/>
-    public PostService(UserService userService ,@Qualifier("push") PublisherService publisherService) {
+    public PostService(UserService userService ,/*@Qualifier("push")*/ PublisherService publisherService) {
         this.userService = userService;
         //this.publisherService = publisherService;
         this.publisherService = publisherService;

@@ -6,8 +6,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Component;
 
-@Primary
-@Component("email")
+//@Primary
+//@Component("email")
 public class EmailPublisherService implements PublisherService{
 
     private static final Logger LOGGER = LoggerFactory.getLogger(EmailPublisherService.class);

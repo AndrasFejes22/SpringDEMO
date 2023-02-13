@@ -5,7 +5,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
-@Component("push")
+//@Component("push")
 public class PushNotificationPublisherService implements PublisherService{
 
     private static final Logger LOGGER = LoggerFactory.getLogger(PushNotificationPublisherService.class);
