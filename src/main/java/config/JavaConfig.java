@@ -1,4 +1,4 @@
-package container;
+package config;
 
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
@@ -29,14 +29,16 @@ public class JavaConfig {
     */
 
     @Bean
-    public PostService postService() {
-        return new PostService(userService(), publisherService());
+    public PostService postService(@Qualifier("push") PublisherService publisherService) {
+        return new PostService(userService(), publisherService);
     }
 
+    /*
     @Bean
-    public PublisherService publisherService() { // így megtalálja @Nullable nélkül is
+    public PublisherService emailPublisherService() { // így megtalálja @Nullable nélkül is
         return new EmailPublisherService();
     }
+    */
 
     //a @Nullable-hez kell egy null check a PostService-be
 

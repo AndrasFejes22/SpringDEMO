@@ -1,5 +1,7 @@
 package container;
 
+import config.JavaConfig;
+import config.PublisherConfig;
 import model.Post;
 import model.User;
 import org.springframework.context.ApplicationContext;
@@ -11,7 +13,7 @@ public class JavaBasedContainer {
     public static void main(String[] args) {
         User user = User.editor("testuser", "pw");
         Post post = Post.of("Spring is fun", user);
-        ApplicationContext context = new AnnotationConfigApplicationContext(JavaConfig.class);
+        ApplicationContext context = new AnnotationConfigApplicationContext(JavaConfig.class, PublisherConfig.class);
         // ilyen is van ez még használja az xml-t:
         //ApplicationContext context = new AnnotationConfigApplicationContext("services");
 
